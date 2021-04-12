@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { capitalizeFirst } from "../../methods/capitalize";
 
-const dbConnection = () => {
+const dbConnection = (): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       mongoose.set("useFindAndModify", false);
@@ -16,7 +16,7 @@ const dbConnection = () => {
       if (dbConnected)
         resolve(capitalizeFirst("Successfuly connected to database"));
     } catch (err) {
-      if (err) reject(new Error(err));
+      if (err) reject(err);
     }
   });
 };
