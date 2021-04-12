@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import startServer from "./methods/startServer";
+import runServer from "./methods/runServer";
 import dbConnection from "./config/db/dbConnection";
 import cors from "cors";
 
@@ -14,4 +14,4 @@ app.use(
   })
 );
 
-startServer(app, dbConnection, []);
+runServer(app, dbConnection, []);

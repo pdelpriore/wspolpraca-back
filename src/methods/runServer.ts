@@ -5,7 +5,7 @@ type TDbConnect = () => Promise<string>;
 type TRouteFn = (app: Application) => void;
 type TRoutes = TRouteFn[];
 
-const startServer = async (
+const runServer = async (
   app: Application,
   dbConnection: TDbConnect,
   routes: TRoutes
@@ -13,7 +13,7 @@ const startServer = async (
   const port = process.env.PORT || 4000;
 
   try {
-    const dbStatus = await dbConnection();
+    const dbStatus: string = await dbConnection();
     console.log(dbStatus);
 
     routes.length > 0 && routes.forEach((route) => route(app));
@@ -24,4 +24,4 @@ const startServer = async (
   }
 };
 
-export default startServer;
+export default runServer;
