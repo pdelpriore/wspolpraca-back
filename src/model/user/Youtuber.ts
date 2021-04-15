@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema(
+const YoutuberSchema = new Schema(
   {
     name: {
       type: String,
@@ -64,13 +64,19 @@ const UserSchema = new Schema(
       type: Number,
       required: false,
     },
-    rate: [{ type: Schema.Types.ObjectId, ref: "rate" }],
+    creationDate: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
+    rates: [{ type: Schema.Types.ObjectId, ref: "rate" }],
+    comments: [{ type: Schema.Types.ObjectId, ref: "comment" }],
     companiesInCooperation: [{ type: Schema.Types.ObjectId, ref: "brand" }],
     messages: [{ type: Schema.Types.ObjectId, ref: "message" }],
   },
-  { collection: "user" }
+  { collection: "youtuber" }
 );
 
-const User = mongoose.model("user", UserSchema);
+const Youtuber = mongoose.model("youtuber", YoutuberSchema);
 
-export default User;
+export default Youtuber;
