@@ -4,9 +4,14 @@ const Schema = mongoose.Schema;
 
 const RateSchema = new Schema(
   {
+    userType: {
+      type: String,
+      required: true,
+      enum: ["youtuber", "brand"],
+    },
     user: {
-      youtuber: { type: Schema.Types.ObjectId, ref: "youtuber" },
-      brand: { type: Schema.Types.ObjectId, ref: "brand" },
+      type: Schema.Types.ObjectId,
+      refPath: "userType",
     },
     value: {
       type: Number,

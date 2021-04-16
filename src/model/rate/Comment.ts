@@ -4,16 +4,14 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema(
   {
-    // to access one of the user type
-    // populate("user.youtuber") or populate("user.brand")
-
-    // if comment is made for a youtuber
-    // store a youtuber id in user.youtuber
-    // if brand - user.brand
-
+    userType: {
+      type: String,
+      required: true,
+      enum: ["youtuber", "brand"],
+    },
     user: {
-      youtuber: { type: Schema.Types.ObjectId, ref: "youtuber" },
-      brand: { type: Schema.Types.ObjectId, ref: "brand" },
+      type: Schema.Types.ObjectId,
+      refPath: "userType",
     },
     content: {
       type: String,

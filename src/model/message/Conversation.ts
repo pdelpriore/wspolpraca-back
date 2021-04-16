@@ -8,9 +8,14 @@ const ConversationSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "message",
     },
+    authorType: {
+      type: String,
+      required: true,
+      enum: ["youtuber", "brand"],
+    },
     author: {
-      youtuber: { type: Schema.Types.ObjectId, ref: "youtuber" },
-      brand: { type: Schema.Types.ObjectId, ref: "brand" },
+      type: Schema.Types.ObjectId,
+      refPath: "authorType",
     },
     content: {
       type: String,
