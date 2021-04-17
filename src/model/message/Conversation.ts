@@ -1,8 +1,16 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IYoutuber } from "../user/Youtuber";
+import { IBrand } from "../user/Brand";
+import { IMessage } from "../message/Message";
 
-const Schema = mongoose.Schema;
+export interface IConversation extends Document {
+  message: IMessage;
+  author: IYoutuber | IBrand;
+  content: string;
+  date: Date;
+}
 
-const ConversationSchema = new Schema(
+const ConversationSchema: Schema = new Schema(
   {
     message: {
       type: Schema.Types.ObjectId,
@@ -30,6 +38,9 @@ const ConversationSchema = new Schema(
   { collection: "conversation" }
 );
 
-const Conversation = mongoose.model("conversation", ConversationSchema);
+const Conversation: Model<IConversation> = model(
+  "conversation",
+  ConversationSchema
+);
 
 export default Conversation;

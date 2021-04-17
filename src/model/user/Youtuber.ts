@@ -1,8 +1,33 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IRate } from "../rate/Rate";
+import { IComment } from "../rate/Comment";
+import { IBrand } from "../user/Brand";
+import { IMessage } from "../message/Message";
 
-const Schema = mongoose.Schema;
+export interface IYoutuber extends Document {
+  name: string;
+  email: string;
+  password: string;
+  photo?: string;
+  isEmailConfirmed: boolean;
+  category: string;
+  youtubeUrl: string;
+  channelBornDate: Date;
+  subscribersQuantity?: number;
+  meanViewsNumberPerVideo?: number;
+  meanSubscribersAge?: number;
+  subscriberMaleSexQuantity?: number;
+  subscriberFemaleSexQuantity?: number;
+  meanLikesNumberPerVideo?: number;
+  meanCommentsNumberPerVideo?: number;
+  creationDate: Date;
+  rates: IRate[];
+  comments: IComment[];
+  companiesInCooperation: IBrand[];
+  messages: IMessage[];
+}
 
-const YoutuberSchema = new Schema(
+const YoutuberSchema: Schema = new Schema(
   {
     name: {
       type: String,
@@ -77,6 +102,6 @@ const YoutuberSchema = new Schema(
   { collection: "youtuber" }
 );
 
-const Youtuber = mongoose.model("youtuber", YoutuberSchema);
+const Youtuber: Model<IYoutuber> = model("youtuber", YoutuberSchema);
 
 export default Youtuber;

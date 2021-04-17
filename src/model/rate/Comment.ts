@@ -1,8 +1,14 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IYoutuber } from "../user/Youtuber";
+import { IBrand } from "../user/Brand";
 
-const Schema = mongoose.Schema;
+export interface IComment extends Document {
+  user: IYoutuber | IBrand;
+  content: string;
+  date: Date;
+}
 
-const CommentSchema = new Schema(
+const CommentSchema: Schema = new Schema(
   {
     userType: {
       type: String,
@@ -26,6 +32,6 @@ const CommentSchema = new Schema(
   { collection: "comment" }
 );
 
-const Comment = mongoose.model("comment", CommentSchema);
+const Comment: Model<IComment> = model("comment", CommentSchema);
 
 export default Comment;

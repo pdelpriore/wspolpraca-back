@@ -1,8 +1,17 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IYoutuber } from "../user/Youtuber";
+import { IBrand } from "../user/Brand";
+import { IConversation } from "../message/Conversation";
 
-const Schema = mongoose.Schema;
+export interface IMessage extends Document {
+  youtuber: IYoutuber;
+  brand: IBrand;
+  isRead: boolean;
+  date: Date;
+  conversations: IConversation[];
+}
 
-const MessageSchema = new Schema(
+const MessageSchema: Schema = new Schema(
   {
     youtuber: {
       type: Schema.Types.ObjectId,
@@ -26,6 +35,6 @@ const MessageSchema = new Schema(
   { collection: "message" }
 );
 
-const Message = mongoose.model("message", MessageSchema);
+const Message: Model<IMessage> = model("message", MessageSchema);
 
 export default Message;

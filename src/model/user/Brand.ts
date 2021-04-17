@@ -1,8 +1,26 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IRate } from "../rate/Rate";
+import { IComment } from "../rate/Comment";
+import { IYoutuber } from "../user/Youtuber";
+import { IMessage } from "../message/Message";
 
-const Schema = mongoose.Schema;
+export interface IBrand extends Document {
+  name: string;
+  email: string;
+  password: string;
+  logo?: string;
+  isEmailConfirmed: boolean;
+  category: string;
+  siteUrl: string;
+  brandBornDate: Date;
+  creationDate: Date;
+  rates: IRate[];
+  comments: IComment[];
+  youtubersInCooperation: IYoutuber[];
+  messages: IMessage[];
+}
 
-const BrandSchema = new Schema(
+const BrandSchema: Schema = new Schema(
   {
     name: {
       type: String,
@@ -49,6 +67,6 @@ const BrandSchema = new Schema(
   { collection: "brand" }
 );
 
-const Brand = mongoose.model("brand", BrandSchema);
+const Brand: Model<IBrand> = model("brand", BrandSchema);
 
 export default Brand;

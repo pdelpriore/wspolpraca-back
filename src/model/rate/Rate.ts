@@ -1,8 +1,13 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from "mongoose";
+import { IYoutuber } from "../user/Youtuber";
+import { IBrand } from "../user/Brand";
 
-const Schema = mongoose.Schema;
+export interface IRate extends Document {
+  user: IYoutuber | IBrand;
+  value: number;
+}
 
-const RateSchema = new Schema(
+const RateSchema: Schema = new Schema(
   {
     userType: {
       type: String,
@@ -21,6 +26,6 @@ const RateSchema = new Schema(
   { collection: "rate" }
 );
 
-const Rate = mongoose.model("rate", RateSchema);
+const Rate: Model<IRate> = model("rate", RateSchema);
 
 export default Rate;
