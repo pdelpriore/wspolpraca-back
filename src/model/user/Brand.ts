@@ -4,6 +4,12 @@ import { IComment } from "../rate/Comment";
 import { IYoutuber } from "../user/Youtuber";
 import { IMessage } from "../message/Message";
 
+type comment = {
+  commentator: IYoutuber;
+  comment: IComment;
+  rate: IRate;
+};
+
 export interface IBrand extends Document {
   name: string;
   email: string;
@@ -14,10 +20,9 @@ export interface IBrand extends Document {
   siteUrl: string;
   brandBornDate: Date;
   creationDate: Date;
-  rates: IRate[];
-  comments: IComment[];
-  youtubersInCooperation: IYoutuber[];
-  messages: IMessage[];
+  comments?: comment[];
+  youtubersInCooperation?: IYoutuber[];
+  messages?: IMessage[];
 }
 
 const BrandSchema: Schema = new Schema(
@@ -59,8 +64,13 @@ const BrandSchema: Schema = new Schema(
       default: Date.now,
       required: true,
     },
-    rates: [{ type: Schema.Types.ObjectId, ref: "rate" }],
-    comments: [{ type: Schema.Types.ObjectId, ref: "comment" }],
+    comments: [
+      {
+        commentator: { type: Schema.Types.ObjectId, ref: "youtuber" },
+        comment: { type: Schema.Types.ObjectId, ref: "comment" },
+        rate: { type: Schema.Types.ObjectId, ref: "rate" },
+      },
+    ],
     youtubersInCooperation: [{ type: Schema.Types.ObjectId, ref: "youtuber" }],
     messages: [{ type: Schema.Types.ObjectId, ref: "message" }],
   },
