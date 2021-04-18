@@ -2,6 +2,7 @@ import { Application } from "express";
 import { capitalizeFirst } from "./capitalize";
 
 type TDbConnect = () => Promise<string>;
+
 export type TRouteFn = (app: Application) => void;
 type TRoutes = TRouteFn[];
 
