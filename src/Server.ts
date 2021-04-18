@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import runServer from "./methods/runServer";
 import dbConnection from "./config/db/dbConnection";
+import routes from "./route/RouteIndex";
 import cors from "cors";
 
 const app: Application = express();
@@ -14,4 +15,4 @@ app.use(
   })
 );
 
-runServer(app, dbConnection, []);
+runServer(app, dbConnection, routes);
