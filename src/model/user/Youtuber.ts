@@ -4,7 +4,7 @@ import { IComment } from "../rate/Comment";
 import { IBrand } from "../user/Brand";
 import { IMessage } from "../message/Message";
 
-type comment = {
+export type comment = {
   commentator: IBrand;
   comment: IComment;
   rate: IRate;
