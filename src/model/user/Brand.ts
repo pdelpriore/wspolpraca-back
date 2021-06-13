@@ -11,6 +11,7 @@ type comment = {
 };
 
 export interface IBrand extends Document {
+  userType: string;
   name: string;
   email: string;
   password: string;
@@ -27,6 +28,10 @@ export interface IBrand extends Document {
 
 const BrandSchema: Schema = new Schema(
   {
+    userType: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

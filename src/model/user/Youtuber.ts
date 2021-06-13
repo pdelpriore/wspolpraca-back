@@ -11,6 +11,7 @@ export type comment = {
 };
 
 export interface IYoutuber extends Document {
+  userType: string;
   name: string;
   email: string;
   password: string;
@@ -34,6 +35,10 @@ export interface IYoutuber extends Document {
 
 const YoutuberSchema: Schema = new Schema(
   {
+    userType: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
