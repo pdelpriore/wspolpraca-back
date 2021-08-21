@@ -17,7 +17,10 @@ const dbConnection = (): Promise<void> => {
         resolve();
       }
     } catch (err) {
-      if (err) reject();
+      if (err) {
+        console.log(err);
+        reject();
+      }
     }
   });
 };
