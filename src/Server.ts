@@ -14,14 +14,18 @@ app.use(
   })
 );
 
-const runServer = () => {
+const runServer = async () => {
   const port = process.env.PORT || 4000;
 
-  dbConnection();
+  try {
+    await dbConnection();
 
-  routes.length > 0 && routes.forEach((route) => route(app));
+    routes.length > 0 && routes.forEach((route) => route(app));
 
-  app.listen(port, () => console.log("Server is running"));
+    app.listen(port, () => console.log("Server is running"));
+  } catch (err) {
+    if (err) console.log(err);
+  }
 };
 
 runServer();

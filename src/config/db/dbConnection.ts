@@ -1,20 +1,25 @@
 import mongoose from "mongoose";
 
-const dbConnection = async () => {
-  try {
-    mongoose.set("useFindAndModify", false);
+const dbConnection = (): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      mongoose.set("useFindAndModify", false);
 
-    const dbConnected = await mongoose.connect(
-      "mongodb://localhost:27017/cooperation",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+      const dbConnected = await mongoose.connect(
+        "mongodb://localhost:27017/cooperation",
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        }
+      );
+      if (dbConnected) {
+        console.log("Successfuly connected to database");
+        resolve();
       }
-    );
-    if (dbConnected) console.log("Successfuly connected to database");
-  } catch (err) {
-    if (err) console.log(err);
-  }
+    } catch (err) {
+      if (err) reject();
+    }
+  });
 };
 
 export default dbConnection;
