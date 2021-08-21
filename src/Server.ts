@@ -18,7 +18,8 @@ const runServer = async () => {
   const port = process.env.PORT || 4000;
 
   try {
-    await dbConnection();
+    const dbStatus = await dbConnection();
+    console.log(dbStatus);
 
     routes.length > 0 && routes.forEach((route) => route(app));
 

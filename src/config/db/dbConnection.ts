@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const dbConnection = (): Promise<void> => {
+const dbConnection = (): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       mongoose.set("useFindAndModify", false);
@@ -12,15 +12,9 @@ const dbConnection = (): Promise<void> => {
           useUnifiedTopology: true,
         }
       );
-      if (dbConnected) {
-        console.log("Successfuly connected to database");
-        resolve();
-      }
+      if (dbConnected) resolve("Successfuly connected to database");
     } catch (err) {
-      if (err) {
-        console.log(err);
-        reject();
-      }
+      if (err) reject(err);
     }
   });
 };
