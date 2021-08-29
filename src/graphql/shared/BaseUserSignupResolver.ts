@@ -19,8 +19,10 @@ const BaseUserSignupResolver = <
     // TODO:
     // add UseMiddleware for password crypt
     async create(@Arg("data", () => inputType) data: any) {
-      const entity = new Entity({});
-      return await entity.save();
+      const entity = new Entity(data);
+      await entity.save();
+
+      return entity;
     }
   }
   return BaseSignupResolver;
