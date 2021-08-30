@@ -6,13 +6,13 @@ import { Model } from "mongoose";
 
 const BaseUserSignupResolver = <
   T extends ClassType,
-  Y extends Model<IYoutuber>,
-  B extends Model<IBrand>
+  X extends Model<IYoutuber>,
+  Y extends Model<IBrand>
 >(
   suffix: string,
   returnType: T,
   inputType: T,
-  Entity: Y | B
+  Entity: X | Y
 ) => {
   @Resolver()
   class BaseSignupResolver {
