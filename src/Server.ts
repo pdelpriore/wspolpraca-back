@@ -28,7 +28,7 @@ const runServer = async () => {
     routes.length > 0 && routes.forEach((route) => route(app));
 
     const schema = await buildSchema({
-      resolvers: [path.join(__dirname, "graphql", "resolvers", "*", "*.ts")],
+      resolvers: [path.join(__dirname, "graphql", "resolvers", "**", "*.ts")],
     });
 
     const apolloServer = new ApolloServer({
