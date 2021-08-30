@@ -1,7 +1,7 @@
 import { ObjectType, Field, ID } from "type-graphql";
 
 @ObjectType()
-export class YoutuberEntity {
+export class YoutuberType {
   @Field(() => ID)
   id!: string;
 
