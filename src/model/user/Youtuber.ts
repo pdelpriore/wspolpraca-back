@@ -17,9 +17,9 @@ export interface IYoutuber extends Document {
   password: string;
   photo?: string;
   isEmailConfirmed: boolean;
-  category: string;
-  youtubeUrl: string;
-  channelBornDate: Date;
+  category?: string;
+  youtubeUrl?: string;
+  channelBornDate?: Date;
   subscribersQuantity?: number;
   meanViewsNumberPerVideo?: number;
   meanSubscribersAge?: number;
@@ -61,15 +61,15 @@ const YoutuberSchema: Schema = new Schema(
     },
     category: {
       type: String,
-      required: true,
+      required: false,
     },
     youtubeUrl: {
       type: String,
-      required: true,
+      required: false,
     },
     channelBornDate: {
       type: Date,
-      required: true,
+      required: false,
     },
     subscribersQuantity: {
       type: Number,

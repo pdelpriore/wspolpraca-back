@@ -17,9 +17,9 @@ export interface IBrand extends Document {
   password: string;
   logo?: string;
   isEmailConfirmed: boolean;
-  category: string;
-  siteUrl: string;
-  brandBornDate: Date;
+  category?: string;
+  siteUrl?: string;
+  brandBornDate?: Date;
   creationDate: Date;
   comments?: comment[];
   youtubersInCooperation?: IYoutuber[];

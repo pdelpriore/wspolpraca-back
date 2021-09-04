@@ -6,9 +6,9 @@ import { IConversation } from "../message/Conversation";
 export interface IMessage extends Document {
   youtuber: IYoutuber;
   brand: IBrand;
-  isRead: boolean;
+  isRead?: boolean;
   date: Date;
-  conversations: IConversation[];
+  conversations?: IConversation[];
 }
 
 const MessageSchema: Schema = new Schema(
@@ -23,7 +23,7 @@ const MessageSchema: Schema = new Schema(
     },
     isRead: {
       type: Boolean,
-      required: true,
+      required: false,
     },
     date: {
       type: Date,
