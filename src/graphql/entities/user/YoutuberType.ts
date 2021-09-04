@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field, ID, Float, Int } from "type-graphql";
 import { CommentsYoutuberType } from "../comments/CommentsYoutuberType";
 import { BrandType } from "./BrandType";
 import { MessageType } from "../message/MessageType";
@@ -35,25 +35,25 @@ export class YoutuberType {
   @Field({ nullable: true })
   channelBornDate?: Date;
 
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   subscribersQuantity?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Float, { nullable: true })
   meanViewsNumberPerVideo?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Float, { nullable: true })
   meanSubscribersAge?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   subscriberMaleSexQuantity?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   subscriberFemaleSexQuantity?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Float, { nullable: true })
   meanLikesNumberPerVideo?: number;
 
-  @Field({ nullable: true })
+  @Field(() => Float, { nullable: true })
   meanCommentsNumberPerVideo?: number;
 
   @Field()
