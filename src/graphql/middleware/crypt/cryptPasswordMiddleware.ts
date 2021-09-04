@@ -28,15 +28,21 @@ export const cryptPasswordMiddleware: MiddlewareFn<IContext> = (
   { context: { req } },
   next
 ): any => {
-  const suffix: keyof IYoutuberDataVariables = "suffix";
+  const signupYoutuberDataKey: keyof IYoutuberDataVariables =
+    "signupYoutuberData";
+
+  const suffix = req.body.variables.suffix;
 
   const userPassword =
-    req.body.variables[`signup${suffix as "Youtuber"}Data`].password;
+    req.body.variables[`signup${suffix}Data` as typeof signupYoutuberDataKey]
+      .password;
 
   if (userPassword) {
     bcrypt.genSalt(8, (_, salt) => {
       bcrypt.hash(userPassword, salt, (_, hash) => {
-        req.body.variables[`signup${suffix as "Youtuber"}Data`].password = hash;
+        req.body.variables[
+          `signup${suffix}Data` as typeof signupYoutuberDataKey
+        ].password = hash;
         return next();
       });
     });
