@@ -6,6 +6,7 @@ import path from "path";
 import dbConnection from "./config/db/dbConnection";
 import routes from "./route/RouteIndex";
 import cors from "cors";
+import { IContext } from "./graphql/context/Context";
 
 const app: Application = express();
 
@@ -33,6 +34,7 @@ const runServer = async () => {
 
     const apolloServer = new ApolloServer({
       schema,
+      context: ({ req, res }: IContext) => ({ req, res }),
     });
 
     await apolloServer.start();

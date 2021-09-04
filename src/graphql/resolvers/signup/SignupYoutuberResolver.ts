@@ -2,10 +2,12 @@ import BaseSignupUserResolver from "../../shared/BaseUserSignupResolver";
 import { YoutuberType } from "../../entities/user/YoutuberType";
 import { YoutuberInputType } from "../../inputs/youtuber/YoutuberInput";
 import Youtuber from "../../../model/user/Youtuber";
+import { cryptPasswordMiddleware } from "../../middleware/crypt/cryptPasswordMiddleware";
 
 export const SignupYoutuberResolver = BaseSignupUserResolver(
   "Youtuber",
   YoutuberType,
   YoutuberInputType,
-  Youtuber
+  Youtuber,
+  [cryptPasswordMiddleware]
 );

@@ -1,8 +1,5 @@
 import { InputType, Field, Int, Float } from "type-graphql";
 import { Length, MinLength } from "class-validator";
-import { CommentsYoutuberType } from "../../entities/comments/CommentsYoutuberType";
-import { BrandType } from "../../entities/user/BrandType";
-import { MessageType } from "../../entities/message/MessageType";
 
 @InputType()
 export class YoutuberInputType {
@@ -57,13 +54,4 @@ export class YoutuberInputType {
 
   @Field({ nullable: true })
   creationDate?: Date;
-
-  @Field(() => [CommentsYoutuberType], { nullable: true })
-  comments?: CommentsYoutuberType[];
-
-  @Field(() => [BrandType], { nullable: true })
-  companiesInCooperation?: BrandType[];
-
-  @Field(() => [MessageType], { nullable: true })
-  messages?: MessageType[];
 }
