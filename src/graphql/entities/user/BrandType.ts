@@ -20,30 +20,30 @@ export class BrandType {
   @Field()
   password!: string;
 
-  @Field()
+  @Field({ nullable: true })
   logo?: string;
 
   @Field()
   isEmailConfirmed!: boolean;
 
-  @Field()
+  @Field({ nullable: true })
   category?: string;
 
-  @Field()
+  @Field({ nullable: true })
   siteUrl?: string;
 
-  @Field()
+  @Field({ nullable: true })
   brandBornDate?: Date;
 
   @Field()
   creationDate!: Date;
 
-  @Field(() => [CommentsBrandType])
+  @Field(() => [CommentsBrandType], { nullable: true })
   comments?: CommentsBrandType[];
 
-  @Field(() => [YoutuberType])
+  @Field(() => [YoutuberType], { nullable: true })
   youtubersInCooperation?: YoutuberType[];
 
-  @Field(() => [MessageType])
+  @Field(() => [MessageType], { nullable: true })
   messages?: MessageType[];
 }

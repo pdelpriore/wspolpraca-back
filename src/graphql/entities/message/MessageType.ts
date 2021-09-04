@@ -14,12 +14,12 @@ export class MessageType {
   @Field(() => BrandType)
   brand!: BrandType;
 
-  @Field()
+  @Field({ nullable: true })
   isRead?: boolean;
 
   @Field()
   date!: Date;
 
-  @Field(() => [ConversationType])
+  @Field(() => [ConversationType], { nullable: true })
   conversations?: ConversationType[];
 }

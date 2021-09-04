@@ -20,51 +20,51 @@ export class YoutuberType {
   @Field()
   password!: string;
 
-  @Field()
+  @Field({ nullable: true })
   photo?: string;
 
   @Field()
   isEmailConfirmed!: boolean;
 
-  @Field()
+  @Field({ nullable: true })
   category?: string;
 
-  @Field()
+  @Field({ nullable: true })
   youtubeUrl?: string;
 
-  @Field()
+  @Field({ nullable: true })
   channelBornDate?: Date;
 
-  @Field()
+  @Field({ nullable: true })
   subscribersQuantity?: number;
 
-  @Field()
+  @Field({ nullable: true })
   meanViewsNumberPerVideo?: number;
 
-  @Field()
+  @Field({ nullable: true })
   meanSubscribersAge?: number;
 
-  @Field()
+  @Field({ nullable: true })
   subscriberMaleSexQuantity?: number;
 
-  @Field()
+  @Field({ nullable: true })
   subscriberFemaleSexQuantity?: number;
 
-  @Field()
+  @Field({ nullable: true })
   meanLikesNumberPerVideo?: number;
 
-  @Field()
+  @Field({ nullable: true })
   meanCommentsNumberPerVideo?: number;
 
   @Field()
   creationDate!: Date;
 
-  @Field(() => [CommentsYoutuberType])
+  @Field(() => [CommentsYoutuberType], { nullable: true })
   comments?: CommentsYoutuberType[];
 
-  @Field(() => [BrandType])
+  @Field(() => [BrandType], { nullable: true })
   companiesInCooperation?: BrandType[];
 
-  @Field(() => [MessageType])
+  @Field(() => [MessageType], { nullable: true })
   messages?: MessageType[];
 }
