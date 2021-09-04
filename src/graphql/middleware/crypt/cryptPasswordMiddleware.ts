@@ -1,28 +1,6 @@
-import { Request } from "express";
 import bcrypt from "bcrypt";
 import { MiddlewareFn } from "type-graphql";
-
-type TYoutuberData = {
-  userType: string;
-  name: string;
-  email: string;
-  password: string;
-};
-
-interface IUserDataVariables {
-  userSuffix: string;
-  signupUserData: TYoutuberData;
-}
-
-interface ISignup extends Request {
-  body: {
-    variables: IUserDataVariables;
-  };
-}
-
-interface IContext {
-  req: ISignup;
-}
+import { IContext, IUserDataVariables } from "../type/SignupMiddlewareContext";
 
 export const cryptPasswordMiddleware: MiddlewareFn<IContext> = (
   { context: { req } },
