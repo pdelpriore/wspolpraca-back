@@ -18,7 +18,7 @@ export class BrandType {
   email!: string;
 
   @Field()
-  password!: string;
+  password?: string;
 
   @Field({ nullable: true })
   logo?: string;

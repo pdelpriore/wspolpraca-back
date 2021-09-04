@@ -13,8 +13,8 @@ export class YoutuberInputType {
   @Field()
   email!: string;
 
-  @Field()
-  password!: string;
+  @Field({ nullable: true })
+  password?: string;
 
   @Field({ nullable: true })
   photo?: string;

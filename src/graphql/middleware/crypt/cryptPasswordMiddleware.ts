@@ -9,14 +9,14 @@ type TYoutuberData = {
   password: string;
 };
 
-interface IYoutuberDataVariables {
-  suffix: string;
-  signupYoutuberData: TYoutuberData;
+interface IUserDataVariables {
+  userSuffix: string;
+  signupUserData: TYoutuberData;
 }
 
 interface ISignup extends Request {
   body: {
-    variables: IYoutuberDataVariables;
+    variables: IUserDataVariables;
   };
 }
 
@@ -28,20 +28,19 @@ export const cryptPasswordMiddleware: MiddlewareFn<IContext> = (
   { context: { req } },
   next
 ): any => {
-  const signupYoutuberDataKey: keyof IYoutuberDataVariables =
-    "signupYoutuberData";
+  const signupUserDataKey: keyof IUserDataVariables = "signupUserData";
 
-  const suffix = req.body.variables.suffix;
+  const userSuffix = req.body.variables.userSuffix;
 
   const userPassword =
-    req.body.variables[`signup${suffix}Data` as typeof signupYoutuberDataKey]
+    req.body.variables[`signup${userSuffix}Data` as typeof signupUserDataKey]
       .password;
 
   if (userPassword) {
     bcrypt.genSalt(8, (_, salt) => {
       bcrypt.hash(userPassword, salt, (_, hash) => {
         req.body.variables[
-          `signup${suffix}Data` as typeof signupYoutuberDataKey
+          `signup${userSuffix}Data` as typeof signupUserDataKey
         ].password = hash;
         return next();
       });
