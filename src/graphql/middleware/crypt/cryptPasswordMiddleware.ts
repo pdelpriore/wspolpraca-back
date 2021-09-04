@@ -2,15 +2,22 @@ import { Request } from "express";
 import bcrypt from "bcrypt";
 import { MiddlewareFn } from "type-graphql";
 
-type TData = {
+type TYoutuberData = {
   userType: string;
   name: string;
   email: string;
   password: string;
 };
 
+interface IYoutuberDataVariables {
+  suffix: string;
+  signupYoutuberData: TYoutuberData;
+}
+
 interface ISignup extends Request {
-  data: TData;
+  body: {
+    variables: IYoutuberDataVariables;
+  };
 }
 
 export interface IContext {
@@ -21,12 +28,19 @@ export const cryptPasswordMiddleware: MiddlewareFn<IContext> = (
   { context: { req } },
   next
 ): any => {
-  const userPassword = req.data.password;
+  const suffix: keyof IYoutuberDataVariables = "suffix";
 
-  bcrypt.genSalt(8, (_, salt) => {
-    bcrypt.hash(userPassword, salt, (_, hash) => {
-      req.data.password = hash;
-      return next();
+  const userPassword =
+    req.body.variables[`signup${suffix as "Youtuber"}Data`].password;
+
+  if (userPassword) {
+    bcrypt.genSalt(8, (_, salt) => {
+      bcrypt.hash(userPassword, salt, (_, hash) => {
+        req.body.variables[`signup${suffix as "Youtuber"}Data`].password = hash;
+        return next();
+      });
     });
-  });
+  } else {
+    return next();
+  }
 };
