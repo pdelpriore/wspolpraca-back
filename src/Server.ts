@@ -35,6 +35,8 @@ const runServer = async () => {
       schema,
     });
 
+    await apolloServer.start();
+
     apolloServer.applyMiddleware({ app });
 
     app.listen(port, () => console.log("Server is running"));
