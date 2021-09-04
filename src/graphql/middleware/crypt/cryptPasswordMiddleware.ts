@@ -20,7 +20,7 @@ interface ISignup extends Request {
   };
 }
 
-export interface IContext {
+interface IContext {
   req: ISignup;
 }
 
