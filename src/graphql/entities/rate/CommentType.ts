@@ -7,7 +7,7 @@ export class CommentType {
   @Field(() => ID)
   id!: string;
 
-  @Field()
+  @Field(() => YoutuberType || BrandType)
   user!: YoutuberType | BrandType;
 
   @Field()

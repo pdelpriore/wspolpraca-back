@@ -8,10 +8,10 @@ export class MessageType {
   @Field(() => ID)
   id!: string;
 
-  @Field()
+  @Field(() => YoutuberType)
   youtuber!: YoutuberType;
 
-  @Field()
+  @Field(() => BrandType)
   brand!: BrandType;
 
   @Field()

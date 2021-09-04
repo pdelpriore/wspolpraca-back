@@ -8,12 +8,12 @@ export class CommentsYoutuberType {
   @Field(() => ID)
   id!: string;
 
-  @Field()
+  @Field(() => BrandType)
   commentator!: BrandType;
 
-  @Field()
+  @Field(() => CommentType)
   comment!: CommentType;
 
-  @Field()
+  @Field(() => RateType)
   rate!: RateType;
 }
