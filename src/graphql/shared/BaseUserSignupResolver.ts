@@ -21,15 +21,17 @@ const BaseUserSignupResolver = <
   returnType: T,
   inputType: T,
   Entity: X | Y,
-  middleware?: Middleware<IContext>[]
+  middleware?: Middleware<any>[]
 ) => {
   @Resolver()
   class BaseSignupResolver {
     @Mutation(() => returnType, { name: `signup${suffix}` })
     @UseMiddleware(...(middleware || []))
     async create(@Arg("data", () => inputType) data: YoutuberInputType) {
-      const entity = new Entity(data);
+      const entity = new Entity({ ...data, isEmailConfirmed: false });
       await entity.save();
+
+      console.log(entity);
 
       return entity;
     }

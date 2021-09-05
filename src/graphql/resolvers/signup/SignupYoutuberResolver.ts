@@ -8,6 +8,5 @@ export const SignupYoutuberResolver = BaseSignupUserResolver(
   "Youtuber",
   YoutuberType,
   YoutuberInputType,
-  Youtuber,
-  [cryptPasswordMiddleware]
+  Youtuber
 );

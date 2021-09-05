@@ -17,7 +17,7 @@ export class YoutuberType {
   @Field()
   email!: string;
 
-  @Field()
+  @Field({ nullable: true })
   password?: string;
 
   @Field({ nullable: true })
