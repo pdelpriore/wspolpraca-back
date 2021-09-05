@@ -1,7 +1,7 @@
 import { MiddlewareFn } from "type-graphql";
 import { IContext } from "../../context/Context";
 
-export const verifyTokenIdMiddleware: MiddlewareFn<IContext> = (
+export const firebaseAuth: MiddlewareFn<IContext> = (
   { context: { req } },
   next
 ) => {
