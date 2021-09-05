@@ -18,9 +18,6 @@ export class YoutuberType {
   email!: string;
 
   @Field({ nullable: true })
-  password?: string;
-
-  @Field({ nullable: true })
   photo?: string;
 
   @Field()

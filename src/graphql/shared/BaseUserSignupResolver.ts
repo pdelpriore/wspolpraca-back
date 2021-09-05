@@ -31,8 +31,6 @@ const BaseUserSignupResolver = <
       const entity = new Entity({ ...data, isEmailConfirmed: false });
       await entity.save();
 
-      console.log(entity);
-
       return entity;
     }
   }

@@ -14,7 +14,6 @@ export interface IBrand extends Document {
   userType: string;
   name: string;
   email: string;
-  password?: string;
   logo?: string;
   isEmailConfirmed: boolean;
   category?: string;
@@ -39,10 +38,6 @@ const BrandSchema: Schema = new Schema(
     email: {
       type: String,
       required: true,
-    },
-    password: {
-      type: String,
-      required: false,
     },
     logo: {
       type: String,

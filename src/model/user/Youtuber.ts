@@ -14,7 +14,6 @@ export interface IYoutuber extends Document {
   userType: string;
   name: string;
   email: string;
-  password?: string;
   photo?: string;
   isEmailConfirmed: boolean;
   category?: string;
@@ -46,10 +45,6 @@ const YoutuberSchema: Schema = new Schema(
     email: {
       type: String,
       required: true,
-    },
-    password: {
-      type: String,
-      required: false,
     },
     photo: {
       type: String,
