@@ -10,7 +10,7 @@ import { IBrand } from "../../model/user/Brand";
 import { YoutuberInputType } from "../inputs/youtuber/YoutuberInput";
 import { Model } from "mongoose";
 import { Middleware } from "type-graphql/dist/interfaces/Middleware";
-import { IContext } from "../middleware/type/SignupMiddlewareContext";
+import { IContext } from "../context/Context";
 
 const BaseUserSignupResolver = <
   T extends ClassType,
@@ -21,7 +21,7 @@ const BaseUserSignupResolver = <
   returnType: T,
   inputType: T,
   Entity: X | Y,
-  middleware?: Middleware<any>[]
+  middleware?: Middleware<IContext>[]
 ) => {
   @Resolver()
   class BaseSignupResolver {
