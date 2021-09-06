@@ -12,15 +12,11 @@ import { Model } from "mongoose";
 import { Middleware } from "type-graphql/dist/interfaces/Middleware";
 import { IContext } from "../context/Context";
 
-const BaseUserSignupResolver = <
-  T extends ClassType,
-  X extends Model<IYoutuber>,
-  Y extends Model<IBrand>
->(
+const BaseUserSignupResolver = (
   suffix: string,
-  returnType: T,
-  inputType: T,
-  Entity: X | Y,
+  returnType: ClassType,
+  inputType: ClassType,
+  Entity: Model<IYoutuber> | Model<IBrand>,
   middleware?: Middleware<IContext>[]
 ) => {
   @Resolver()
