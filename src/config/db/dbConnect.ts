@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const dbConnection = (): Promise<string> => {
+const dbConnect = (): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       mongoose.set("useFindAndModify", false);
@@ -19,4 +19,4 @@ const dbConnection = (): Promise<string> => {
   });
 };
 
-export default dbConnection;
+export default dbConnect;

@@ -3,7 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import express, { Application } from "express";
 import path from "path";
-import dbConnection from "./config/db/dbConnection";
+import dbConnect from "./config/db/dbConnect";
 import routes from "./route/RouteIndex";
 import cors from "cors";
 import { IContext } from "./graphql/context/Context";
@@ -23,8 +23,8 @@ const runServer = async () => {
   const port = process.env.PORT || 4000;
 
   try {
-    const dbStatus = await dbConnection();
-    console.log(dbStatus);
+    const dbConnectionStatus = await dbConnect();
+    console.log(dbConnectionStatus);
 
     routes.length > 0 && routes.forEach((route) => route(app));
 
