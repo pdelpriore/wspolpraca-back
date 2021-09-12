@@ -20,9 +20,6 @@ export class YoutuberType {
   @Field({ nullable: true })
   photo?: string;
 
-  @Field()
-  isEmailConfirmed!: boolean;
-
   @Field({ nullable: true })
   category?: string;
 

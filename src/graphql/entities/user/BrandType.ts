@@ -20,9 +20,6 @@ export class BrandType {
   @Field({ nullable: true })
   logo?: string;
 
-  @Field()
-  isEmailConfirmed!: boolean;
-
   @Field({ nullable: true })
   category?: string;
 

@@ -43,10 +43,6 @@ const BrandSchema: Schema = new Schema(
       type: String,
       required: false,
     },
-    isEmailConfirmed: {
-      type: Boolean,
-      required: true,
-    },
     category: {
       type: String,
       required: true,
