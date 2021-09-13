@@ -2,7 +2,7 @@ import { MiddlewareFn } from "type-graphql";
 import firebaseAdmin from "../../../config/firebase/FirebaseAdmin";
 import { IContext } from "../../context/Context";
 
-export const firebaseAuth: MiddlewareFn<IContext> = async (
+const firebaseAuth: MiddlewareFn<IContext> = async (
   { context: { req } },
   next
 ) => {
@@ -17,3 +17,5 @@ export const firebaseAuth: MiddlewareFn<IContext> = async (
     console.log(err);
   }
 };
+
+export default firebaseAuth;
