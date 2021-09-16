@@ -1,16 +1,8 @@
-import { initializeApp, credential } from "firebase-admin";
-import path from "path";
-
-const cooperationAccount = require(path.join(
-  __dirname,
-  "..",
-  "..",
-  "..",
-  "cooperation.json"
-));
+import { initializeApp, credential, ServiceAccount } from "firebase-admin";
+import cooperationAccount from "../../../cooperation.json";
 
 const firebaseAdmin = initializeApp({
-  credential: credential.cert(cooperationAccount),
+  credential: credential.cert(cooperationAccount as ServiceAccount),
 });
 
 export default firebaseAdmin;
