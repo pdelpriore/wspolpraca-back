@@ -14,7 +14,7 @@ export interface IBrand extends Document {
   userType: string;
   name: string;
   email: string;
-  logo?: string;
+  picture?: string;
   isEmailConfirmed: boolean;
   category?: string;
   siteUrl?: string;
@@ -39,7 +39,7 @@ const BrandSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    logo: {
+    picture: {
       type: String,
       required: false,
     },

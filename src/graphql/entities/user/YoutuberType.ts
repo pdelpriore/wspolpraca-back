@@ -18,7 +18,7 @@ export class YoutuberType {
   email!: string;
 
   @Field({ nullable: true })
-  photo?: string;
+  picture?: string;
 
   @Field({ nullable: true })
   category?: string;

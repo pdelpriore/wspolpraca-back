@@ -14,7 +14,7 @@ export class YoutuberInputType {
   email!: string;
 
   @Field({ nullable: true })
-  photo?: string;
+  picture?: string;
 
   @Field({ nullable: true })
   isEmailConfirmed?: boolean;
