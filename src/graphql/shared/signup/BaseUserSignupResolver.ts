@@ -5,12 +5,12 @@ import {
   ClassType,
   UseMiddleware,
 } from "type-graphql";
-import { IYoutuber } from "../../model/user/Youtuber";
-import { IBrand } from "../../model/user/Brand";
-import { YoutuberInputType } from "../inputs/youtuber/YoutuberInput";
+import { IYoutuber } from "../../../model/user/Youtuber";
+import { IBrand } from "../../../model/user/Brand";
+import { SignupUserInputType } from "../../inputs/signup/SignupUserInput";
 import { Model } from "mongoose";
 import { Middleware } from "type-graphql/dist/interfaces/Middleware";
-import { IContext } from "../context/Context";
+import { IContext } from "../../context/Context";
 
 const BaseUserSignupResolver = (
   suffix: string,
@@ -23,7 +23,7 @@ const BaseUserSignupResolver = (
   class BaseSignupResolver {
     @Mutation(() => returnType, { name: `signup${suffix}` })
     @UseMiddleware(...(middleware || []))
-    async create(@Arg("data", () => inputType) data: YoutuberInputType) {
+    async signup(@Arg("data", () => inputType) data: SignupUserInputType) {
       const entity = new Entity(data);
       await entity.save();
 

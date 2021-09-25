@@ -1,13 +1,13 @@
-import BaseSignupUserResolver from "../../shared/signup/BaseUserSignupResolver";
+import BaseSigninUserResolver from "../../shared/signin/BaseUserSigninResolver";
 import { YoutuberType } from "../../entities/user/YoutuberType";
-import { SignupUserInputType } from "../../inputs/signup/SignupUserInput";
+import { SigninUserInputType } from "../../inputs/signin/SigninUserInput";
 import Youtuber from "../../../model/user/Youtuber";
 import firebaseAuth from "../../middleware/userAuth/firebaseAuth";
 
-export const SignupYoutuberResolver = BaseSignupUserResolver(
+export const SigninYoutuberResolver = BaseSigninUserResolver(
   "Youtuber",
   YoutuberType,
-  SignupUserInputType,
+  SigninUserInputType,
   Youtuber,
   [firebaseAuth]
 );
