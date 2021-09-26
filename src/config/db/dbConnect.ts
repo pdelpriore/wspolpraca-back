@@ -6,7 +6,7 @@ const dbConnect = (): Promise<string> => {
       mongoose.set("useFindAndModify", false);
 
       const dbConnected = await mongoose.connect(
-        "mongodb://localhost:27017/cooperation",
+        process.env.MONGO_DB_URL as string,
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,

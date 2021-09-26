@@ -10,7 +10,7 @@ import { IContext } from "./graphql/context/Context";
 
 const app: Application = express();
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
 
 app.use(express.json());
 app.use(
