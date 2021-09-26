@@ -20,7 +20,7 @@ app.use(
 );
 
 const runServer = async () => {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT;
 
   try {
     const dbConnectionStatus = await dbConnect();
