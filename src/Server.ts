@@ -5,12 +5,9 @@ import express, { Application } from "express";
 import path from "path";
 import dbConnect from "./config/db/dbConnect";
 import routes from "./route/RouteIndex";
-import cors from "cors";
 import { IContext } from "./graphql/context/Context";
 
 const app: Application = express();
-
-app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
 
 app.use(express.json());
 app.use(
@@ -21,6 +18,11 @@ app.use(
 
 const runServer = async () => {
   const port = process.env.PORT;
+
+  const corsOptions = {
+    credentials: true,
+    origin: process.env.ORIGIN_URL,
+  };
 
   try {
     const dbConnectionStatus = await dbConnect();
@@ -39,7 +41,7 @@ const runServer = async () => {
 
     await apolloServer.start();
 
-    apolloServer.applyMiddleware({ app });
+    apolloServer.applyMiddleware({ app, cors: corsOptions });
 
     app.listen(port, () => console.log("Server is running"));
   } catch (err) {
