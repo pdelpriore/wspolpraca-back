@@ -15,7 +15,6 @@ export interface IBrand extends Document {
   name: string;
   email: string;
   picture?: string;
-  isEmailConfirmed: boolean;
   category?: string;
   siteUrl?: string;
   brandBornDate?: Date;

@@ -15,7 +15,6 @@ export interface IYoutuber extends Document {
   name: string;
   email: string;
   picture?: string;
-  isEmailConfirmed: boolean;
   category?: string;
   youtubeUrl?: string;
   channelBornDate?: Date;
